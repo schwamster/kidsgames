@@ -104,7 +104,7 @@ class WordInput extends React.Component {
 
     sayLetter = (event) => {
         if (this.state.sayEachLetter) {
-            responsiveVoice.speak(event.key, this.props.voice);
+            responsiveVoice.speak(event.key, this.props.culture.voice);
         }
     }
 
@@ -230,7 +230,7 @@ class WordGame extends React.Component {
                 <div className={"card text-white mb-3 " + this.state.background} style={{ maxWidth: 20 + 'rem' }}>
                     <div className="card-body">
                         <Word word={word} culture={this.props.culture} />
-                        <WordInput voice={this.props.culture} correctAnswer={this.correctAnswer} word={word} />
+                        <WordInput culture={this.props.culture} correctAnswer={this.correctAnswer} word={word} />
                     </div>
                 </div>
         );
