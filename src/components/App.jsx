@@ -1,5 +1,6 @@
 import React from 'react';
 import {WordGame} from './WordGame.jsx'
+import {MathGame} from './MathGame.jsx'
 
 const Navigation = (props) => {
 
@@ -77,12 +78,6 @@ const CultureSelector = (props) => {
     );
 }
 
-const MathGame = (props) => {
-    return (
-        <span>MathCard</span>
-    );
-}
-
 const WORDGAME = 'wordgame';
 const MATHGAME = 'mathgame';
 class Game extends React.Component {
@@ -93,7 +88,7 @@ class Game extends React.Component {
     renderGame = () => {
         switch (this.props.game) {
             case MATHGAME:
-                return (<MathGame playAgain={this.playAgain} />);
+                return (<MathGame playAgain={this.playAgain} culture={this.props.culture} />);
             case WORDGAME:
             default:
                 return (<WordGame playAgain={this.playAgain} culture={this.props.culture}/>);
@@ -140,7 +135,7 @@ class App extends React.Component {
     state = {
         userName: 'Fritz',
         userAvatar: './assets/images/boy.svg',
-        game: WORDGAME,
+        game: MATHGAME,
         culture: App.getCulture('en-GB')
     }
 
@@ -168,7 +163,11 @@ class App extends React.Component {
             <div>
                 <Navigation selectedGame={game} switchGame={this.switchGame} culture={culture} changeCulture={this.changeCulture} userName={userName} userAvatar={userAvatar} />
                 <Game game={game} culture={culture} />
-                <div className="fixed-bottom">Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+                <div className="fixed-bottom">
+                    Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+                    <br></br>
+                    Success sound by <a href="https://www.freesound.org/people/rhodesmas/sounds/322930/">rhodesmas</a> under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>
+                </div>
 
                 <audio id="audio-success">
                     <source src="./sounds/success.wav" type="audio/wav" />
