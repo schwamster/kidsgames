@@ -12,7 +12,6 @@ resource "aws_s3_bucket" "somebucket" {
   }
 }
 
-
 output "bucket-id" {
   value = "${aws_s3_bucket.somebucket.id}"
 }

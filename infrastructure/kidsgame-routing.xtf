@@ -46,3 +46,7 @@ output "bucket-domain" {
 output "website-endpoint" {
   value = "${aws_s3_bucket.somebucket.website_endpoint}"
 }
+
+output "website-url" {
+    value = "http://${var.subdomain}.${substr(var.domain, 0, length(var.domain) -1)}"
+}
