@@ -137,6 +137,10 @@ If remove the infrastructure you can run
 
     aws s3 rm --recursive s3://{bucketname}
 
+alternativly you can add the following property to the bucket resource:
+
+    force_destroy = "true"
+
 ### optional - add custom domain
 
 If you already have a hosted zone in your aws account this is straight forward. Update your kidsgame.tf with the follwoing code:

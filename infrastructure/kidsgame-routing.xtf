@@ -16,6 +16,8 @@ data "aws_route53_zone" "main" {
 
 resource "aws_s3_bucket" "somebucket" {
   bucket = "${var.subdomain}.${substr(var.domain, 0, length(var.domain) -1)}"
+
+  force_destroy = "true"
   
   website {
     index_document = "index.html"
