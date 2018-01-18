@@ -3,6 +3,15 @@ provider "aws" {
   profile    = "default"
 }
 
+terraform {
+  backend "s3" {
+    bucket = "terraform3bdb243fed004e4ab7ab45eb31de4dc8"
+    key    = "states/kidsgame"
+    region = "eu-west-1"
+    # dynamodb_table = "terraform-states"
+  }
+}
+
 variable "domain" {
 }
 
