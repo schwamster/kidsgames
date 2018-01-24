@@ -83,7 +83,8 @@ const words = [
     'Tilda',
     'Bastian',
     'Madelene',
-    'Svea'
+    'Svea',
+    'Viktor'
 ]
 
 export class WordGame extends React.Component {

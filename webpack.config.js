@@ -5,8 +5,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './src/index.html',
   filename: 'index.html',
-  inject: 'body'
-})
+  inject: 'body',
+  favicon: './src/favicon.ico'
+});
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const PUBLIC_PATH = 'https://kidsgame.greenelephant.io/';
 
 
 module.exports = {
@@ -14,7 +18,8 @@ module.exports = {
   entry: ['./src/index.js'],
   output: {
     path: path.resolve('dist'),
-    filename: 'index_bundle.js'
+    filename: 'index_bundle.js',
+    publicPath: PUBLIC_PATH
   },
   module: {
     loaders: [
@@ -54,8 +59,8 @@ module.exports = {
         }]
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        include: /images/,
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
+        include: [/images/],
         use: [{
           loader: 'file-loader',
           options: {
@@ -89,6 +94,32 @@ module.exports = {
       'window.jQuery': 'jquery',
       Popper: ['popper.js', 'default'],
       _: 'lodash'
+    }),
+    new SWPrecacheWebpackPlugin(
+      {
+        cacheId: 'kidsgame.greenelephant.io-cache-id',
+        dontCacheBustUrlsMatching: /\.\w{8}\./,
+        filename: 'service-worker.js',
+        minify: true,
+        navigateFallback: PUBLIC_PATH + 'index.html',
+        staticFileGlobsIgnorePatterns: [/\.map$/, /manifest\.json$/]
+      }
+    ),
+    new WebpackPwaManifest({
+      name: 'Kidsgames',
+      short_name: 'Kidsgames',
+      description: 'Simple games for kids that make math and typing fun',
+      background_color: '#01579b',
+      theme_color: '#01579b',
+      'theme-color': '#01579b',
+      start_url: '/',
+      icons: [
+        {
+          src: path.resolve('src/components/assets/images/brand.png'),
+          sizes: [96, 128, 192, 256, 384, 512],
+          destination: 'images'
+        }
+      ]
     })
   ]
 }
