@@ -4,6 +4,7 @@ import { PlayAgain } from './PlayAgain.jsx';
 import { Clear } from './Clear.jsx';
 import math from 'mathjs';
 import * as d3 from 'd3';
+import axios from 'axios';
 
 const problemToString = (problem) => {
     if (problem.type === 'addition') {
@@ -130,9 +131,10 @@ class SolutionInput extends React.Component {
 }
 
 const problems = [
-    { type: 'addition', scope: { a: 4, b: 3 } },
+    { type: 'addition', scope: { a: 1, b: 3 } },
     { type: 'addition', scope: { a: 3, b: 7 } },
     { type: 'addition', scope: { a: 2, b: 4 } },
+    { type: 'addition', scope: { a: 7, b: 4 } },
     { type: 'subtraction', scope: { a: 4, b: 3 } }
 ];
 
@@ -147,6 +149,27 @@ export class MathGame extends React.Component {
 
     static getNextProblem = (index) => {
         return problems[index];
+    }
+
+    getProblems = () => {
+        // let url = 'https://2d9foixhz3.execute-api.eu-west-1.amazonaws.com/v1/kidsgame-get-math-problems';
+        // let idToken = this.getIdToken();
+        // axios.get(
+        //     url,
+        //     {
+        //         headers: {
+        //             "Authorization": `Bearer ${idToken.jwtToken}`
+        //         }
+        //     }
+        // )
+        //     .then((response) => {
+        //         var response = response.data;
+        //         console.log(response);
+        //     },
+        //         (error) => {
+        //             var status = error.response.status
+        //         }
+        //     );
     }
 
     state = MathGame.initialState(this.props);

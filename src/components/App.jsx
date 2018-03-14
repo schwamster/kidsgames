@@ -1,6 +1,7 @@
 import React from 'react';
-import {WordGame} from './WordGame.jsx'
-import {MathGame} from './MathGame.jsx'
+import { WordGame } from './WordGame.jsx'
+import { MathGame } from './MathGame.jsx'
+import {Login} from './login/Login.jsx'
 
 const Navigation = (props) => {
 
@@ -46,16 +47,8 @@ const Navigation = (props) => {
                     </li>
 
                 </ul>
-                <ul className="navbar-nav">
-                    <li className="nav-item dropdown active">
-                        <a className="nav-link dropdown-toggle" data-toggle="dropdown">
-                            <img src={require(`${props.userAvatar}`)} width="30" height="30" alt="" />
-                            <span style={{ marginLeft: 5 + 'px' }}>{props.userName}</span>
-                        </a>
-                        <div className="dropdown-menu">
-                            <a className="dropdown-item" href="#">{translate('logOut')}</a>
-                        </div>
-                    </li>
+                <ul className="navbar-nav">                    
+                    <Login culture={props.culture}/>
                     <CultureSelector culture={props.culture} changeCulture={props.changeCulture} />
                 </ul>
             </div>
@@ -91,7 +84,7 @@ class Game extends React.Component {
                 return (<MathGame playAgain={this.playAgain} culture={this.props.culture} />);
             case WORDGAME:
             default:
-                return (<WordGame playAgain={this.playAgain} culture={this.props.culture}/>);
+                return (<WordGame playAgain={this.playAgain} culture={this.props.culture} />);
         }
     }
 
@@ -133,16 +126,13 @@ class App extends React.Component {
     }
 
     state = {
-        userName: 'Fritz',
-        userAvatar: './assets/images/boy.svg',
         game: MATHGAME,
         culture: App.getCulture('en-GB')
     }
 
     switchGame = (game) => {
         this.setState({
-            game: game,
-            userAvatar: './assets/images/girl.svg'
+            game: game
         })
     }
 
@@ -154,14 +144,12 @@ class App extends React.Component {
 
     render() {
         const {
-            userName,
-            userAvatar,
             game,
             culture
         } = this.state;
         return (
             <div>
-                <Navigation selectedGame={game} switchGame={this.switchGame} culture={culture} changeCulture={this.changeCulture} userName={userName} userAvatar={userAvatar} />
+                <Navigation selectedGame={game} switchGame={this.switchGame} culture={culture} changeCulture={this.changeCulture} />
                 <Game game={game} culture={culture} />
                 <div className="fixed-bottom">
                     Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>

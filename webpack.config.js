@@ -14,15 +14,12 @@ const PUBLIC_PATH = 'https://kidsgame.greenelephant.io/';
 
 
 module.exports = {
-  // entry: ['babel-polyfill', './src/index.js'],
-  entry: ['./src/index.js'],
-  output: {
-    path: path.resolve('dist'),
-    filename: 'index_bundle.js',
-    publicPath: PUBLIC_PATH
-  },
+  devtool: 'inline-source-map',
+  // devServer: {
+  //   contentBase: './dist'
+  // },
   module: {
-    loaders: [
+    rules: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
       {
