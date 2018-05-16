@@ -1,2 +1,0 @@
-npm-license-crawler --dependencies --json licenses.json
-Get-Content -Path ./licenses.json | jq '[.[] | {"license": .licenses, "repository": .repository}]|group_by(.license)|[.[] | {"license": .[0].license, "count": length}]' > "license-summary.json"
