@@ -5,6 +5,6 @@ export { Callback } from './Callback';
 export { Home } from './Home';
 export { KidsgameNav } from './KidsgameNav';
 export { Logout } from './Logout';
-export { MathGame } from './MathGame';
+export { MathGame } from './Math/MathGame';
 export { Settings } from './Settings';
 export { WordGame } from './WordGame';
