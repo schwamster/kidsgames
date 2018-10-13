@@ -7,4 +7,6 @@ export { KidsgameNav } from './KidsgameNav';
 export { Logout } from './Logout';
 export { MathGame } from './Math/MathGame';
 export { Settings } from './Settings';
-export { WordGame } from './WordGame';
+export { WordGames } from './Word/WordGames';
+export { Typing1} from './Word/Typing1';
+export { LowerCase} from './Word/LowerCase';

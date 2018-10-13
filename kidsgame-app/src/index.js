@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import CookieBanner from 'react-cookie-banner';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import { About, Callback, Home, KidsgameNav, Logout, MathGame, WordGame, PrivateRoute, Settings } from './components';
+import { About, Callback, Home, KidsgameNav, Logout, MathGame, WordGames, PrivateRoute, Settings, Typing1, LowerCase } from './components';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { isLoggedIn, login } from './utils/auth-service';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -116,7 +116,9 @@ class Root extends React.Component {
                             cookie="user-has-accepted-cookies" />
                         <Route exact path="/" component={Home} />
                         <Route exact path="/math" render={props => <MathGame addProgress={this.addProgress} culture={culture} {...props} />} />
-                        <Route exact path="/word" render={props => <WordGame addProgress={this.addProgress} culture={culture} {...props} />} />
+                        <Route exact path="/word" render={props => <WordGames culture={culture} {...props} />} />
+                        <Route exact path="/word/typing1" render={props => <Typing1 addProgress={this.addProgress} culture={culture} {...props} />} />
+                        <Route exact path="/word/lowerCase" render={props => <LowerCase addProgress={this.addProgress} culture={culture} {...props} />} />
                         <Route exact path="/about" component={About} />
                         <PrivateRoute path="/settings" component={Settings} />
                         <Route path="/callback" component={Callback} />

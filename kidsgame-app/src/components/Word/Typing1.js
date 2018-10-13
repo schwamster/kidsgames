@@ -1,7 +1,7 @@
 import React from 'react';
-import responsiveVoice from './assets/scripts/responsivevoice';
-import { PlayAgain } from './PlayAgain';
-import { Clear } from './Clear';
+import responsiveVoice from '../assets/scripts/responsivevoice';
+import { PlayAgain } from '../PlayAgain';
+import { Clear } from '../Clear';
 
 
 class Word extends React.Component {
@@ -87,19 +87,19 @@ const words = [
     'Viktor'
 ]
 
-export class WordGame extends React.Component {
+export class Typing1 extends React.Component {
     static getNextWord = (index) => {
         return words[index];
     }
 
     static initialState = (props) => ({
         count: 0,
-        word: WordGame.getNextWord(0),
+        word: Typing1.getNextWord(0),
         background: 'bg-primary',
         isGameWon: false
     });
 
-    state = WordGame.initialState(this.props);
+    state = Typing1.initialState(this.props);
 
     correctAnswer = (answer) => {
         var audio_success = document.getElementById('audio-success');
@@ -112,7 +112,7 @@ export class WordGame extends React.Component {
     }
 
     playAgain = () => {
-        this.setState(WordGame.initialState(this.props));
+        this.setState(Typing1.initialState(this.props));
     }
 
     next = () => {
@@ -125,7 +125,7 @@ export class WordGame extends React.Component {
         else {
             this.setState((prevState) => ({
                 count: prevState.count + 1,
-                word: WordGame.getNextWord(prevState.count + 1),
+                word: Typing1.getNextWord(prevState.count + 1),
                 background: 'bg-primary',
                 input: ''
             }));
