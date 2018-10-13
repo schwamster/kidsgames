@@ -18,6 +18,8 @@
   "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
   "license": "MIT",
   "dependencies": {
+    "@iopipe/iopipe": "^1.8.0",
+    "@iopipe/trace": "^1.2.0",
     "aws-sdk": "^2.233.1",
     "event-emitter": "^0.3.5"
   }

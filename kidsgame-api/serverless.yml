@@ -11,6 +11,7 @@ provider:
   region: eu-west-1
   environment:
     DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}-progress
+    IOPIPE_TOKEN: ${env:IOPIPE}
   iamRoleStatements:
     - Effect: Allow
       Action:
